@@ -1,0 +1,17 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io('http://localhost:8000');
+
+    socket.on('message_from_server',(datafromServer)=> {
+        console.log(datafromServer);
+        socket.emit('message_to_server',{ data : 'This is a client socket.' })
+    });
+
+    socket.on('ping', () => {
+        console.log("Ping was recieved from the server!");
+    });
+    socket.on('pong',(latency) => {
+        console.log(latency);
+        console.log('Pong was sent to the server');
+    });
+</script>
