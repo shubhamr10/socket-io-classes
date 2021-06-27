@@ -12,5 +12,9 @@ io.on('connection',(socket) => {
     socket.emit('message_from_server', {data : 'This is a socket server'})
     socket.on('message_to_server', (data_from_client) => {
         console.log(data_from_client);
-    })
+    });
+    socket.on('new_message', (msg)=> {
+        // console.log(msg);
+        io.emit('message_to_client', {text:msg.text});
+    });
 })
