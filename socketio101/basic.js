@@ -11,7 +11,7 @@ io.on('connection', (socket, req) => {
     socket.emit('welcome','Welcome to the websocket server!!');
     socket.on('message', (msg)=>{
         console.log(msg);
-    })
+    });
 })
 
 server.listen(8000);
