@@ -12,7 +12,10 @@ io.on('connection', (socket) => {
     socket.emit('message_from_server', { data: 'This is a message from server!' });
     socket.on('message_to_server', (message_from_client)=> {
         console.log('Message from client===>', message_from_client);
-    })
+    });
+    socket.on('new_message_to_server', (new_message) =>{
+        io.emit('message_to_clients', new_message);
+    });
 });
 
 /* 
